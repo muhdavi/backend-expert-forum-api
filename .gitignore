@@ -1,0 +1,6 @@
+.idea
+coverage
+node_modules
+.env
+config/database/test.json
+package-lock.json
