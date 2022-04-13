@@ -4,7 +4,7 @@ describe('an AddTread entities', () => {
     it('should throw error when payload did not contain needed property', () => {
         const payload = {
             title: 'thread title test',
-            owner: 'dicoding',
+            owner: 'user-123',
         };
 
         expect(() => new AddTread(payload)).toThrowError('ADD_THREAD.NOT_CONTAIN_NEEDED_PROPERTY');
@@ -24,7 +24,7 @@ describe('an AddTread entities', () => {
         const payload = {
             id: 'thread-id_test',
             title: 'thread title test',
-            owner: 'dicoding',
+            owner: 'user-123',
         };
 
         const addThread = new AddTread(payload);
