@@ -39,7 +39,7 @@ describe('HTTP server', () => {
   });
 
   describe('when GET /', () => {
-    it('should return 200 as home page', async () => {
+    it('should return 200 as hello world page', async () => {
       const server = await createServer({});
       const response = await server.inject({
         method: 'GET',
@@ -48,7 +48,7 @@ describe('HTTP server', () => {
       const responseJson = JSON.parse(response.payload);
       expect(response.statusCode).toEqual(200);
       expect(responseJson.status).toEqual('success');
-      expect(responseJson.message).toEqual('welcome to home page forum api!');
+      expect(responseJson.message).toEqual('hello world!');
     });
   });
 });
