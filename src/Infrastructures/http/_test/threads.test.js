@@ -23,7 +23,7 @@ describe('/threads endpoint', () => {
                 body: 'thread body test',
             };
 
-            const accessToken = ServerTestHelper.getAccessToken('user-123');
+            const accessToken = await ServerTestHelper.getAccessToken('user-123');
             const server = await createServer(container);
 
             const response = await server.inject({

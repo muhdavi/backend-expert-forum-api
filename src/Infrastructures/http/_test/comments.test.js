@@ -126,6 +126,8 @@ describe('/threads/{threadId}/comments endpoint', () => {
         it('should response 403 when comment it is not the owner', async () => {
             const server = await createServer(container);
 
+            const anotherAccessToken = await ServerTestHelper.getAccessToken('user-321', 'davi');
+
             await CommentsTableTestHelper.addComment({
                 userId: 'user-123',
                 threadId: 'thread-id_test',
@@ -135,7 +137,7 @@ describe('/threads/{threadId}/comments endpoint', () => {
                 method: 'DELETE',
                 url: '/threads/thread-id_test/comments/comment-id_test',
                 headers: {
-                    Authorization: `Bearer ${accessToken}`,
+                    Authorization: `Bearer ${anotherAccessToken}`,
                 },
             });
 

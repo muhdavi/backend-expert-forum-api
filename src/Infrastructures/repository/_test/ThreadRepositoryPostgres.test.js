@@ -102,7 +102,12 @@ describe('ThreadRepositoryPostgres', () => {
                 owner: 'user-id_test',
             });
 
-            await CommentsTableTestHelper.addComment('user-id_test', 'thread-id_test', 'comment-id_test', 'comment content test');
+            await CommentsTableTestHelper.addComment({
+                userId: 'user-id_test',
+                threadId: 'thread-id_test',
+                commentId: 'comment-id_test',
+                content: 'comment content test'
+            });
             const threadRepositoryPostgres = new ThreadRepositoryPostgres(pool, {});
             const threadDetail = await threadRepositoryPostgres.getThreadById('thread-id_test');
 

@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 exports.up = pgm => {
     pgm.createTable('threads', {
         id: {
@@ -21,14 +20,10 @@ exports.up = pgm => {
         owner: {
             type: 'VARCHAR(50)',
             notNull: true,
-        },
+            references: 'users',
+            onDelete: 'CASCADE',
+        }
     });
-
-    pgm.addConstraint(
-        'threads',
-        'threads_owner_fk_users_id',
-        'FOREIGN KEY(owner) REFERENCES users(id) ON DELETE CASCADE'
-    );
 };
 
 exports.down = pgm => {
