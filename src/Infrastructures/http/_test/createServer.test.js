@@ -1,4 +1,5 @@
 const createServer = require('../createServer');
+const {response} = require("@hapi/hapi/lib/validation");
 
 describe('HTTP server', () => {
   it('should response 404 when request unregistered route', async () => {
@@ -49,6 +50,19 @@ describe('HTTP server', () => {
       expect(response.statusCode).toEqual(200);
       expect(responseJson.status).toEqual('success');
       expect(responseJson.message).toEqual('hello world!');
+    });
+
+    it('should return 200 and hello world', async () => {
+      const server = await createServer({});
+
+      const response = await server.inject({
+        method: 'GET',
+        url: '/hello',
+      });
+
+      const responseJson = JSON.parse(response.payload);
+      expect(response.statusCode).toEqual(200);
+      expect(responseJson.value).toEqual('Hello hello!');
     });
   });
 });
