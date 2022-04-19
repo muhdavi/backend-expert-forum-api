@@ -49,7 +49,7 @@ describe('HTTP server', () => {
       const responseJson = JSON.parse(response.payload);
       expect(response.statusCode).toEqual(200);
       expect(responseJson.status).toEqual('success');
-      expect(responseJson.message).toEqual('hello world!');
+      expect(responseJson.message).toEqual('Hello World!');
     });
 
     it('should return 200 and hello world', async () => {

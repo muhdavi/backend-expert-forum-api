@@ -4,7 +4,7 @@ const routes = (handler) => ([
         path: '/',
         handler: () => ({
             status: 'success',
-            message: 'hello world!',
+            message: 'Hello World!',
         }),
     },
     {
