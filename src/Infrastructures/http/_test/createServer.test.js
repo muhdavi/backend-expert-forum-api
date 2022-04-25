@@ -51,18 +51,5 @@ describe('HTTP server', () => {
       expect(responseJson.status).toEqual('success');
       expect(responseJson.message).toEqual('Hello, this is Forum API Application!');
     });
-
-    it('should return 200 and hello world', async () => {
-      const server = await createServer({});
-
-      const response = await server.inject({
-        method: 'GET',
-        url: '/hello',
-      });
-
-      const responseJson = JSON.parse(response.payload);
-      expect(response.statusCode).toEqual(200);
-      expect(responseJson.value).toEqual('hello world!');
-    });
   });
 });
