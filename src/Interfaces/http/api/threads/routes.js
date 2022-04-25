@@ -4,7 +4,7 @@ const routes = (handler) => ([
         path: '/',
         handler: () => ({
             status: 'success',
-            message: 'Hello World!',
+            message: 'Hello, this is Forum API Application!',
         }),
     },
     {

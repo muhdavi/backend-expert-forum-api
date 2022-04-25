@@ -1,4 +1,5 @@
 const createServer = require('../createServer');
+const {response} = require("@hapi/hapi/lib/validation");
 
 describe('HTTP server', () => {
   it('should response 404 when request unregistered route', async () => {
@@ -38,8 +39,8 @@ describe('HTTP server', () => {
     expect(responseJson.message).toEqual('terjadi kegagalan pada server kami');
   });
 
-  describe('when GET /', () => {
-    it('should return 200 as hello world page', async () => {
+  describe('when GET / and /hello', () => {
+    it('should return 200 as home page', async () => {
       const server = await createServer({});
       const response = await server.inject({
         method: 'GET',
@@ -48,7 +49,20 @@ describe('HTTP server', () => {
       const responseJson = JSON.parse(response.payload);
       expect(response.statusCode).toEqual(200);
       expect(responseJson.status).toEqual('success');
-      expect(responseJson.message).toEqual('Hello World!');
+      expect(responseJson.message).toEqual('Hello, this is Forum API Application!');
+    });
+
+    it('should return 200 and hello world', async () => {
+      const server = await createServer({});
+
+      const response = await server.inject({
+        method: 'GET',
+        url: '/hello',
+      });
+
+      const responseJson = JSON.parse(response.payload);
+      expect(response.statusCode).toEqual(200);
+      expect(responseJson.value).toEqual('hello world!');
     });
 
     it('should return 200 and hello world', async () => {
