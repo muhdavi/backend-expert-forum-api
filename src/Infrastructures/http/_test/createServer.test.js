@@ -62,20 +62,7 @@ describe('HTTP server', () => {
 
       const responseJson = JSON.parse(response.payload);
       expect(response.statusCode).toEqual(200);
-      expect(responseJson.value).toEqual('hello world!');
-    });
-
-    it('should return 200 and hello world', async () => {
-      const server = await createServer({});
-
-      const response = await server.inject({
-        method: 'GET',
-        url: '/hello',
-      });
-
-      const responseJson = JSON.parse(response.payload);
-      expect(response.statusCode).toEqual(200);
-      expect(responseJson.value).toEqual('Hello World!');
+      expect(responseJson.value).toEqual('Hello World, I am Davi!');
     });
   });
 });
